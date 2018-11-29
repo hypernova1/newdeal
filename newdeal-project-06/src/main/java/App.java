@@ -82,7 +82,8 @@ public class App {
       } else if (command.equals("/board/list")) {
         for (int j = 0; j < boardIdx; j++) {
           System.out.printf("%3d, %-20s, %s, %d\n", 
-              boards[j].no, boards[j].contents, boards[j].createdDate, boards[j].viewCount);
+              boards[j].no, boards[j].contents,
+              boards[j].createdDate, boards[j].viewCount);
         }
         
       } else if (command.equals("quit")) {
