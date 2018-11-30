@@ -59,26 +59,4 @@ public class Queue<E> extends LinkedList<E> implements Cloneable {
     }
     
   }
-  
-  /*
-  public static void main(String[] args) throws Exception {
-    Stack<String> stack = new Stack<>();
-    stack.push("aaa");
-    stack.push("bbb");
-    stack.push("ccc");
-    stack.push("ddd");
-    stack.push("eee");
-    stack.push("fff");
-    
-    Stack<String> temp1 = stack.clone();
-    while (temp1.size() > 0) {
-      System.out.println(temp1.pop());
-    }
-    System.out.println("----------------------");
-    
-    Stack<String> temp2 = stack.clone();
-    while (temp2.size() > 0) {
-      System.out.println(temp2.pop());
-    }
-  }*/
 }

@@ -4,8 +4,8 @@ import java.util.Arrays;
 import com.eomcs.lms.domain.Lesson;
 
 public class LessonList {
-  static final int LENGTH = 10;
-  private Lesson[] list = new Lesson[LENGTH];
+  private static final int LENGTH = 10;
+  private Lesson[] list;
   private int size = 0;
   
   public LessonList() {

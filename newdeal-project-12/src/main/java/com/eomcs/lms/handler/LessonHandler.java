@@ -5,10 +5,8 @@ import com.eomcs.lms.domain.Lesson;
 
 public class LessonHandler {
 
-  LessonList list;
-
-  Scanner keyboard;
-  
+  private LessonList list;
+  private Scanner keyboard;
   
   public LessonHandler(Scanner keyboard) {
     this.keyboard = keyboard;
