@@ -8,7 +8,7 @@
 ## 03 : 배열과 흐름제어문(분기문, 반복문)
 - github.com/eomcs/eomcs-java-project 에서 v1.5 과제 해결
 
-## 04 : 
+## 04 : 클래스로 데이터 타입 만들기
 - github.com/eomcs/eomcs-java-project 에서 v1.6 과제 해결
 
 ## 05 : 
@@ -29,4 +29,14 @@
 ## 10 : 인스턴스 변수와 인스턴스 메서드가 필요한 이유
 - github.com/eomcs/eomcs-java-project 에서 v2.2 과제 해결
 
-## 11 : 
+## 11 : 생성자와 setter/getter 사용
+- github.com/eomcs/eomcs-java-project 에서 v2.3, v2.4 과제 해결
+
+## 12 : 데이터 처리 코드를 별도의 클래스로 분리
+- github.com/eomcs/eomcs-java-project 에서 v2.5 과제 해결
+
+## 13 : 다형성, 다형적 변수, 제네릭
+- github.com/eomcs/eomcs-java-project 에서 v2.6, v2.7 과제 해결
+
+## 14: 인터페이스로 규칙 정의하기
+- github.com/eomcs/eomcs-java-project 에서 v2.8 과제 해결

@@ -8,7 +8,6 @@ public class App2 {
   public static void main(String[] args) {
     
     Scanner scan = new Scanner(System.in);
-    
     System.out.println("번호?");
     int no = Integer.parseInt(scan.nextLine());
     
