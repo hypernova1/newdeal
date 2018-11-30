@@ -1,4 +1,4 @@
-﻿# newdeal20181127
+﻿# newdeal
 
 ## 01 : Maven 기본 자바 프로젝트 폴더 준비
 
@@ -11,7 +11,7 @@
 ## 04 : 클래스로 데이터 타입 만들기
 - github.com/eomcs/eomcs-java-project 에서 v1.6 과제 해결
 
-## 05 : 
+## 05 : 흐름제어문 활용
 - github.com/eomcs/eomcs-java-project 에서 v1.7 과제 해결
 
 ## 06 : 메서드 활용
@@ -38,5 +38,8 @@
 ## 13 : 다형성, 다형적 변수, 제네릭
 - github.com/eomcs/eomcs-java-project 에서 v2.6, v2.7 과제 해결
 
-## 14: 인터페이스로 규칙 정의하기
-- github.com/eomcs/eomcs-java-project 에서 v2.8 과제 해결
+## 14: 인터페이스로 규칙 정의하기, 반복자(Iterator) 패턴, 중첩 클래스, 익명 클래스
+- github.com/eomcs/eomcs-java-project 에서 v2.8 ~ v.3.3 과제 해결
+
+## 15: 컬렉션 API 사용, 커맨드 패턴, 예외처리
+- github.com/eomcs/eomcs-java-project 에서 v3.4 ~ v3.6 과제 해결

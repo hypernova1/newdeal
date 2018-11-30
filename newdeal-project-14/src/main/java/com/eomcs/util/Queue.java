@@ -33,6 +33,33 @@ public class Queue<E> extends LinkedList<E> implements Cloneable {
     return null;
   }
   
+  public Iterator<E> iterator() {
+    return new IteratorImpl();
+  }
+  
+  //중첩 클래스
+  class IteratorImpl implements Iterator<E> {
+
+    Queue<E> queue;
+    int count;
+    
+    {
+      this.queue = Queue.this.clone();
+    }
+    
+    @Override
+    public boolean hasNext() {
+      return this.count < Queue.this.size();
+    }
+
+    @Override
+    public E next() {
+      this.count++;
+      return queue.poll();
+    }
+    
+  }
+  
   /*
   public static void main(String[] args) throws Exception {
     Stack<String> stack = new Stack<>();

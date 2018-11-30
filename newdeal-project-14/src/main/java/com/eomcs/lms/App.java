@@ -4,14 +4,15 @@ import com.eomcs.lms.handler.BoardHandler;
 import com.eomcs.lms.handler.LessonHandler;
 import com.eomcs.lms.handler.MemberHandler;
 import com.eomcs.util.ArrayList;
+import com.eomcs.util.Iterator;
 import com.eomcs.util.LinkedList;
 import com.eomcs.util.Queue;
-import com.eomcs.util.Stack;
+import com.eomcs.util.StackInnterClass;
 
 public class App {
 
   static Scanner keyboard = new Scanner(System.in);
-  static Stack<String> commandHistory = new Stack<>(10);
+  static StackInnterClass<String> commandHistory = new StackInnterClass<>(10);
   static Queue<String> commandHistory2 = new Queue<>(10);
   
   public static void main(String[] args) {
@@ -110,18 +111,22 @@ public class App {
   }
 
   private static void printCommandHistory() {
-    Stack<String> temp = commandHistory.clone();
+    StackInnterClass<String> temp = commandHistory.clone();
     
-    while (temp.size() > 0) {
-      System.out.println(temp.pop());
+    Iterator<String> iterator = temp.iterator();
+    
+    while (iterator.hasNext()) {
+      System.out.println(iterator.next());
     }
   }
   
   private static void printCommandHistory2() {
     Queue<String> temp = commandHistory2.clone();
     
-    while (temp.size() > 0) {
-      System.out.println(temp.poll());
+    Iterator<String> iterator = temp.iterator();
+    
+    while (iterator.hasNext()) {
+      System.out.println(iterator.next());
     }
   }
 
