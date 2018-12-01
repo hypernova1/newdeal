@@ -74,27 +74,4 @@ public class ArrayList<T> implements List<T> {
     return size;
   }
   
-  /*
-  public static void main(String[] args) {
-    ArrayList<String> list = new ArrayList<>();
-    
-    list.add("aaa");
-    list.add("bbb");
-    list.add("ccc");
-    list.add("ddd");
-    list.add("eee");
-    list.add("fff");
-    list.add("ggg");
-    
-    System.out.println(list.size());
-    
-    System.out.println(list.remove(3));
-    
-    System.out.println(list.size());
-    
-    for (int i = 0; i < list.size(); i++) {
-      System.out.println(list.get(i));
-    }
-  }
-  */
 }

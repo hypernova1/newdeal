@@ -7,7 +7,7 @@ public class QueueIterator<E> implements Iterator<E> {
   private int size;
   
   public QueueIterator(Queue<E> queue){
-    this.queue = queue;
+    this.queue = queue.clone();
     this.size = queue.size();
   }
   

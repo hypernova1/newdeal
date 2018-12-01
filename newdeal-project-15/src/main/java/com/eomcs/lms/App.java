@@ -18,15 +18,16 @@ import com.eomcs.lms.handler.HelloCommand;
 
 public class App {
 
-  static Scanner keyboard = new Scanner(System.in);
-  static Stack<String> commandHistory = new Stack<>();
-  static Queue<String> commandHistory2 = new LinkedList<>();
+  private static Scanner keyboard = new Scanner(System.in);
+  private static Stack<String> commandHistory = new Stack<>();
+  private static Queue<String> commandHistory2 = new LinkedList<>();
 
   public static void main(String[] args) {
 
     ArrayList<Board> boards = new ArrayList<>();
 
     HashMap<String, Command> commandMap = new HashMap<>();
+    
     commandMap.put("hello", new HelloCommand(keyboard));
     
     commandMap.put("/board/list", new BoardListCommand(keyboard, boards));

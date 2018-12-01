@@ -1,24 +1,24 @@
 package com.eomcs.util;
 
-public class StackInnterClass<E> extends LinkedList<E> implements Cloneable {
+public class StackInnerClass<E> extends LinkedList<E> implements Cloneable {
 
   private int maxSize;
   
-  public StackInnterClass() {
+  public StackInnerClass() {
     maxSize = 100;
   }
   
-  public StackInnterClass(int maxSize) {
+  public StackInnerClass(int maxSize) {
     this.maxSize = maxSize;
   }
   
   @Override
-  public StackInnterClass<E> clone() {
-    StackInnterClass<E> temp = new StackInnterClass<>();
+  public StackInnerClass<E> clone() {
+    StackInnerClass<E> temp = new StackInnerClass<>();
     for (int i = 0; i < size(); i++) {
       temp.add(get(i));
     }
-    return (StackInnterClass<E>) temp;
+    return (StackInnerClass<E>) temp;
   }
   
   public void push(E value) {
@@ -38,16 +38,16 @@ public class StackInnterClass<E> extends LinkedList<E> implements Cloneable {
   // FIXME: 내부 제네릭 클래스는 외부 제네릭 클래스의 타입을 따라가서 따로 명시를 안해도 인식하는 듯..?
   class StackIterator implements Iterator<E> {
 
-    StackInnterClass<E> stack;
+    StackInnerClass<E> stack;
     int count;
     
     {
-     this.stack = StackInnterClass.this.clone(); 
+     this.stack = StackInnerClass.this.clone(); 
     }
     
     @Override
     public boolean hasNext() {
-      return this.count < StackInnterClass.this.size();
+      return this.count < StackInnerClass.this.size();
     }
 
     @Override

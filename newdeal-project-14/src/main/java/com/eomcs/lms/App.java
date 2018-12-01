@@ -7,12 +7,12 @@ import com.eomcs.util.ArrayList;
 import com.eomcs.util.Iterator;
 import com.eomcs.util.LinkedList;
 import com.eomcs.util.Queue;
-import com.eomcs.util.StackInnterClass;
+import com.eomcs.util.StackInnerClass;
 
 public class App {
 
   static Scanner keyboard = new Scanner(System.in);
-  static StackInnterClass<String> commandHistory = new StackInnterClass<>(10);
+  static StackInnerClass<String> commandHistory = new StackInnerClass<>(10);
   static Queue<String> commandHistory2 = new Queue<>(10);
   
   public static void main(String[] args) {
@@ -111,7 +111,7 @@ public class App {
   }
 
   private static void printCommandHistory() {
-    StackInnterClass<String> temp = commandHistory.clone();
+    StackInnerClass<String> temp = commandHistory.clone();
     
     Iterator<String> iterator = temp.iterator();
     
