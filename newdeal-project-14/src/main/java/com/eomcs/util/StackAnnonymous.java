@@ -18,7 +18,7 @@ public class StackAnnonymous<E> extends LinkedList<E> implements Cloneable {
     for (int i = 0; i < size(); i++) {
       temp.add(get(i));
     }
-    return (StackAnnonymous<E>) temp;
+    return temp;
   }
   
   public void push(E value) {
