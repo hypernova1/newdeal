@@ -38,8 +38,10 @@
 ## 13 : 다형성, 다형적 변수, 제네릭
 - github.com/eomcs/eomcs-java-project 에서 v2.6, v2.7 과제 해결
 
-## 14: 인터페이스로 규칙 정의하기, 반복자(Iterator) 패턴, 중첩 클래스, 익명 클래스
+## 14 : 인터페이스로 규칙 정의하기, 반복자(Iterator) 패턴, 중첩 클래스, 익명 클래스
 - github.com/eomcs/eomcs-java-project 에서 v2.8 ~ v.3.3 과제 해결
 
-## 15: 컬렉션 API 사용, 커맨드 패턴, 예외처리
+## 15 : 컬렉션 API 사용, 커맨드 패턴, 예외처리
 - github.com/eomcs/eomcs-java-project 에서 v3.4 ~ v3.6 과제 해결
+
+## 16 : 
