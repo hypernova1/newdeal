@@ -1,43 +1,35 @@
 package com.eomcs.lms.handler;
 
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
-import com.eomcs.lms.domain.Board;
 
 public class BoardDeleteCommand implements Command {
   
   Scanner keyboard;
-  List<Board> list;
   
-  public BoardDeleteCommand(Scanner keyboard, List<Board> list) {
+  public BoardDeleteCommand(Scanner keyboard) {
     this.keyboard = keyboard;
-    this.list = list;
   }
 
   @Override
   public void execute() {
-    System.out.print("번호? ");
-    int no = Integer.parseInt(keyboard.nextLine());
-
-    int index = indexOfBoard(no);
-    if (index == -1) {
-      System.out.println("해당 게시글을 찾을 수 없습니다.");
-      return;
+    
+    try (Connection conn = DriverManager.getConnection(
+          "jdbc:mariadb://localhost:3307/studydb", "study", "1111");
+        Statement s = conn.createStatement();
+        ) {
+      System.out.print("번호? ");
+      int bno = Integer.parseInt(keyboard.nextLine());
+      
+      s.executeUpdate("DELETE FROM board WHERE bno = " + bno);
+      
+      System.out.println("삭제되었습니다.");
+    } catch (SQLException e1) {
+      e1.printStackTrace();
     }
-
-    Board board = list.get(index);
-
-    System.out.printf("내용: %s\n", board.getContents());
-    System.out.printf("작성일: %s\n", board.getCreatedDate());
-  }
-  
-  private int indexOfBoard(int no) {
-    for (int i = 0; i < list.size(); i++) {
-      Board b = list.get(i);
-      if (b.getNo() == no)
-        return i;
-    }
-    return -1;
   }
   
 }

@@ -1,30 +1,47 @@
 package com.eomcs.lms.handler;
 
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
-import com.eomcs.lms.domain.Board;
 
 public class BoardUpdateCommand implements Command {
   
   Scanner keyboard;
-  List<Board> list;
   
-  public BoardUpdateCommand(Scanner keyboard, List<Board> list) {
+  public BoardUpdateCommand(Scanner keyboard) {
     this.keyboard = keyboard;
-    this.list = list;
   }
 
   @Override
   public void execute() {
-    System.out.print("번호? ");
-    int no = Integer.parseInt(keyboard.nextLine());
-
     
-    try {
-      // 기존 값 복제
+    ResultSet rs = null;
+    
+    try (Connection conn = DriverManager.getConnection(
+          "jdbc:mariadb://localhost:3307/studydb", "study", "1111");
+        Statement s = conn.createStatement();
+        ) {
+      System.out.print("번호? ");
+      int bno = Integer.parseInt(keyboard.nextLine());
       
-    } catch (Exception e) {
-      System.out.println("변경 중 오류 발생!");
+      rs = s.executeQuery("SELECT cont FROM board WHERE bno = " + bno);
+      if(rs.next()) {
+        String oldContent = rs.getString("cont");
+        System.out.printf("내용(%s)", oldContent);
+      }
+      
+      rs.close();
+      
+      String content = keyboard.nextLine();
+      s.executeUpdate("Update board SET cont = '" + content + "'"
+          + " WHERE bno = " + bno);
+      
+      System.out.println("변경되었습니다.");
+    } catch (SQLException e1) {
+      e1.printStackTrace();
     }
   }
   

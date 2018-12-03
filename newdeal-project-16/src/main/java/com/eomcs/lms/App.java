@@ -1,13 +1,11 @@
 package com.eomcs.lms;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
-import com.eomcs.lms.domain.Board;
 import com.eomcs.lms.handler.BoardAddCommand;
 import com.eomcs.lms.handler.BoardDeleteCommand;
 import com.eomcs.lms.handler.BoardDetailCommand;
@@ -24,16 +22,14 @@ public class App {
 
   public static void main(String[] args) {
 
-    ArrayList<Board> boards = new ArrayList<>();
-
     HashMap<String, Command> commandMap = new HashMap<>();
     commandMap.put("hello", new HelloCommand(keyboard));
     
     commandMap.put("/board/list", new BoardListCommand(keyboard));
     commandMap.put("/board/detail", new BoardDetailCommand(keyboard));
     commandMap.put("/board/add", new BoardAddCommand(keyboard));
-    commandMap.put("/board/delete", new BoardDeleteCommand(keyboard, boards));
-    commandMap.put("/board/update", new BoardUpdateCommand(keyboard, boards));
+    commandMap.put("/board/update", new BoardUpdateCommand(keyboard));
+    commandMap.put("/board/delete", new BoardDeleteCommand(keyboard));
 
     while (true) {
       String command = prompt();
