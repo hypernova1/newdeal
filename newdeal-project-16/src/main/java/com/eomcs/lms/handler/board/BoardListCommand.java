@@ -1,4 +1,4 @@
-package com.eomcs.lms.handler;
+package com.eomcs.lms.handler.board;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 import org.mariadb.jdbc.Driver;
+import com.eomcs.lms.handler.Command;
 
 public class BoardListCommand implements Command {
   

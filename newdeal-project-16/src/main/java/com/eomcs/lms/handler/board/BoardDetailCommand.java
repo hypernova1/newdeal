@@ -1,4 +1,4 @@
-package com.eomcs.lms.handler;
+package com.eomcs.lms.handler.board;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
+import com.eomcs.lms.handler.Command;
 
 public class BoardDetailCommand implements Command {
 

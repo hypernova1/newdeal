@@ -44,4 +44,13 @@
 ## 15 : 컬렉션 API 사용, 커맨드 패턴, 예외처리
 - github.com/eomcs/eomcs-java-project 에서 v3.4 ~ v3.6 과제 해결
 
-## 16 : 
+## 16 : DB 모델링 및 JDBC
+
+## 17 : DAO 도입
+
+## 18 : DAO에 인터페이스 적용
+- 다양한 DBMS에 대응하여 DAO를 교체할 수 있도록 함
+
+## 19 : SQL 인젝션 공격과 자바 보안
+- SQL 인젝션 공격을 이해하고 막기
+- Statement의 createStatement() 대신 PreparedStatement의 prepareStatement 사용
