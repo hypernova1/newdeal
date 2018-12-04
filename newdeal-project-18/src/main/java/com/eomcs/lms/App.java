@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
+import com.eomcs.lms.dao.BoardDao;
+import com.eomcs.lms.dao.impl.MariaDBBoardDao;
 import com.eomcs.lms.handler.Command;
 import com.eomcs.lms.handler.HelloCommand;
 import com.eomcs.lms.handler.board.BoardAddCommand;
@@ -17,20 +19,22 @@ import com.eomcs.lms.handler.lesson.LessonListCommand;
 
 public class App {
 
-  static Scanner keyboard = new Scanner(System.in);
-  static Stack<String> commandHistory = new Stack<>();
-  static Queue<String> commandHistory2 = new LinkedList<>();
+  private static Scanner keyboard = new Scanner(System.in);
+  private static Stack<String> commandHistory = new Stack<>();
+  private static Queue<String> commandHistory2 = new LinkedList<>();
 
   public static void main(String[] args) {
+    
+    BoardDao boardDao = new MariaDBBoardDao();
 
     HashMap<String, Command> commandMap = new HashMap<>();
     commandMap.put("hello", new HelloCommand(keyboard));
     
-    commandMap.put("/board/list", new BoardListCommand(keyboard));
-    commandMap.put("/board/detail", new BoardDetailCommand(keyboard));
-    commandMap.put("/board/add", new BoardAddCommand(keyboard));
-    commandMap.put("/board/update", new BoardUpdateCommand(keyboard));
-    commandMap.put("/board/delete", new BoardDeleteCommand(keyboard));
+    commandMap.put("/board/list", new BoardListCommand(keyboard, boardDao));
+    commandMap.put("/board/detail", new BoardDetailCommand(keyboard, boardDao));
+    commandMap.put("/board/add", new BoardAddCommand(keyboard, boardDao));
+    commandMap.put("/board/update", new BoardUpdateCommand(keyboard, boardDao));
+    commandMap.put("/board/delete", new BoardDeleteCommand(keyboard, boardDao));
     commandMap.put("/lesson/list", new LessonListCommand(keyboard));
 
     while (true) {

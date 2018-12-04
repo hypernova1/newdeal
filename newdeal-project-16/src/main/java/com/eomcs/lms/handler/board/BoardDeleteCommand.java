@@ -1,10 +1,11 @@
-package com.eomcs.lms.handler;
+package com.eomcs.lms.handler.board;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
+import com.eomcs.lms.handler.Command;
 
 public class BoardDeleteCommand implements Command {
   
@@ -19,8 +20,8 @@ public class BoardDeleteCommand implements Command {
     
     try (Connection conn = DriverManager.getConnection(
           "jdbc:mariadb://localhost:3307/studydb", "study", "1111");
-        Statement s = conn.createStatement();
-        ) {
+        Statement s = conn.createStatement()) {
+      
       System.out.print("번호? ");
       int bno = Integer.parseInt(keyboard.nextLine());
       
