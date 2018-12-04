@@ -54,3 +54,7 @@
 ## 19 : SQL 인젝션 공격과 자바 보안
 - SQL 인젝션 공격을 이해하고 막기
 - Statement의 createStatement() 대신 PreparedStatement의 prepareStatement 사용
+
+## 20 : MyBatis 도입
+- 자바 소스에서 SQL 코드를 분리한다.
+- JDBC 코드를 캡슐화한 MyBatis로 대체한다.
