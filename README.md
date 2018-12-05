@@ -58,3 +58,9 @@
 ## 20 : MyBatis 도입
 - 자바 소스에서 SQL 코드를 분리한다.
 - JDBC 코드를 캡슐화한 MyBatis로 대체한다.
+
+## 21 : Spring IoC Container 도입
+- 객체 생성과 소멸을 Spring IoC Container에게 맡김
+
+## 22 : Spring IoC 컨테이너와 MyBatis 연동
+- MyBatis가 하던 DB와 트랜잭션 관리를 Spring IoC 컨테이너에게 넘김

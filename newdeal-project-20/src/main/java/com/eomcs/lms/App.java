@@ -32,7 +32,7 @@ public class App {
   private static Stack<String> commandHistory = new Stack<>();
   private static Queue<String> commandHistory2 = new LinkedList<>();
 
-  public static void main(String[] args) throws IOException, SQLException {
+  public static void main() throws IOException, SQLException {
     
     String resource = "com/eomcs/lms/conf/mybatis-config.xml";
     InputStream inputStream = Resources.getResourceAsStream(resource);
@@ -45,13 +45,13 @@ public class App {
     HashMap<String, Command> commandMap = new HashMap<>();
     commandMap.put("hello", new HelloCommand(keyboard));
     
-    commandMap.put("/board/list", new BoardListCommand(keyboard, boardDao));
+    commandMap.put("/board/list"  , new BoardListCommand(keyboard, boardDao));
     commandMap.put("/board/detail", new BoardDetailCommand(keyboard, boardDao));
-    commandMap.put("/board/add", new BoardAddCommand(keyboard, boardDao));
+    commandMap.put("/board/add"   , new BoardAddCommand(keyboard, boardDao));
     commandMap.put("/board/update", new BoardUpdateCommand(keyboard, boardDao));
     commandMap.put("/board/delete", new BoardDeleteCommand(keyboard, boardDao));
-    commandMap.put("/lesson/list", new LessonListCommand(keyboard));
-    commandMap.put("/auth/login", new LoginCommand(keyboard, memberDao));
+    commandMap.put("/lesson/list" , new LessonListCommand(keyboard));
+    commandMap.put("/auth/login"  , new LoginCommand(keyboard, memberDao));
 
     while (true) {
       String command = prompt();
