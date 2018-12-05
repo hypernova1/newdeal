@@ -19,13 +19,13 @@ import org.springframework.transaction.PlatformTransactionManager;
 public class AppConfig {
   
   @Value("${jdbc.driver}")
-  String jdbcDriver;
+  private String jdbcDriver;
   @Value("${jdbc.url}")
-  String jdbcUrl;
+  private String jdbcUrl;
   @Value("${jdbc.username}")
-  String jdbcUsername;
+  private String jdbcUsername;
   @Value("${jdbc.password}")
-  String jdbcPassword;
+  private String jdbcPassword;
   
   @Bean
   public DataSource dataSource() {
@@ -57,14 +57,12 @@ public class AppConfig {
     // => SQL 매퍼 파일의 위치 정보를 Resource 객체에 담아서 넘김
     // => Resource 객체는 Spring IoC 컨테이너를 통해 생성 가능
     // => Spring IoC 컨테의너의 객체를 얻는 방법
-    //      -> 이 메서드의 파라미터로 요청
+    //    -> 이 메서드의 파라미터로 요청
     factoryBean.setMapperLocations(
-        iocContainer.getResources(
-        "classpath:/com/eomcs/lms/mapper/*Mapper.xml"));
+        iocContainer.getResources("classpath:/com/eomcs/lms/mapper/*Mapper.xml"));
     
     return factoryBean.getObject();
   }
-  
   
   @Bean
   public Scanner keyboard() {

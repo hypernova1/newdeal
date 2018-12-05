@@ -15,7 +15,6 @@ public class App {
   private static Scanner keyboard;
 
   public static void main(String[] args) throws Exception {
-
     
     // AppConfig 클래스가 메모리에 로딩되어 있지 않다면, 즉시 로딩 후 그 로딩된 클래스 정보를 리턴
     Class<?> clazz = Class.forName("com.eomcs.lms.AppConfig");
@@ -33,8 +32,6 @@ public class App {
      * for(String name : names) { System.out.printf("%s ==> %s\n", name,
      * iocContainer.getBean(name).getClass().getName()); }
      */
-
-
     while (true) {
       
       keyboard = (Scanner) iocContainer.getBean("keyboard");
