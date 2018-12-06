@@ -29,6 +29,7 @@ public class AuthFilter implements Filter {
         && !servletPath.endsWith(".js")
         && !servletPath.endsWith(".png")
         && !servletPath.endsWith(".jpg")) {
+      
       HttpSession session = httpReq.getSession();
       Member loginUser = (Member) session.getAttribute("loginUser");
       
@@ -36,9 +37,7 @@ public class AuthFilter implements Filter {
         httpResp.sendRedirect("/auth/login");
         return;
       }
-      
     }
-    
     chain.doFilter(request, response);
   }
 
