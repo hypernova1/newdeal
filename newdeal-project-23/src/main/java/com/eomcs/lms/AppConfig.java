@@ -39,7 +39,7 @@ public class AppConfig {
   }
   
   // 트랜잭션 객체생성시 기본 이름으로 transactionManager로 설정해야함
-  // 다른이름으로 설정하게 되면 트랜잭션 관련 다른 객체를 생성할 때 그 객체가 트랜잭션 관리자를 자동으로 찾지 못함 
+  // 다른이름으로 설정하게되면 트랜잭션 관련 다른 객체를 생성할 때 그 객체가 트랜잭션 관리자를 자동으로 찾지 못함 
   public PlatformTransactionManager transactionManager() {
     return new DataSourceTransactionManager(dataSource());
   }

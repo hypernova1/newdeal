@@ -9,12 +9,20 @@ public class Lesson implements Cloneable {
   private Date endDate;
   private int totalHours;
   private int dayHours;
+  private int ownerNo;
   
   @Override
   public Lesson clone() throws CloneNotSupportedException {
     return (Lesson) super.clone();
   }
   
+  public int getOwnerNo() {
+    return ownerNo;
+  }
+  
+  public void setOwnerNo(int ownerNo) {
+    this.ownerNo = ownerNo;
+  }
   public int getNo() {
     return no;
   }

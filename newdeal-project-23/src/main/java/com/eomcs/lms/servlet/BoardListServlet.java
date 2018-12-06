@@ -1,8 +1,8 @@
 package com.eomcs.lms.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,23 +46,24 @@ public class BoardListServlet extends HttpServlet {
   public void doGet(HttpServletRequest req, HttpServletResponse res)
       throws ServletException, IOException {
     
-    res.setContentType("text/plain;charset=utf-8");
-    PrintWriter out = res.getWriter();
-    out.println("게시물 목록(권샘찬)");
-
+    // MIME Type(Multi-purpose Mail Exention
+    
+    
     try {
-      boardDao = iocContainer.getBean(BoardDao.class);
       List<Board> list = boardDao.findAll();
+      // 게시물 목록을 리퀘스트 객체에 담음
+      req.setAttribute("list", list);
       
-      for(Board board : list) {
-        out.printf("%3d, %-20s, %s, %d\n"
-            , board.getNo()
-            , board.getContents()
-            , board.getCreatedDate()
-            , board.getViewCount());
-      }
+      // jsp로 실행 위임
+      RequestDispatcher rd = req.getRequestDispatcher("/board/list.jsp");
+      
+      // 촐력 콘텐트 타입을 include하는 쪽에서 규정해야 함
+      res.setContentType("text/html;charset=utf-8");
+      rd.include(req, res);
+      
     }catch (Exception e) {
       e.printStackTrace();
+      throw new ServletException(e);
     } 
     
   }

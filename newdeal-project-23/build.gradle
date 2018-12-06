@@ -20,6 +20,7 @@ dependencies {
     
     //providedCompile: 개발과정에서만 사용하고 배포할 때는 제외
     providedCompile group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
     compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.3.0'
     compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.5.0'
     testCompile 'junit:junit:4.12'
