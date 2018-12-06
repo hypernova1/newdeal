@@ -19,6 +19,7 @@
   <select id="findAll" resultMap="boardMap">
     SELECT bno, cont, cdt, view
     FROM board
+    ORDER BY bno DESC
   </select>
   
   <select id="findByNo" resultMap="boardMap" parameterType="int">
