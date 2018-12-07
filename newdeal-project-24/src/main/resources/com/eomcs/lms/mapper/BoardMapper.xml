@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="BoardDao">
+<mapper namespace="com.eomcs.lms.dao.BoardDao">
 
 <!-- resultMap은 아래 작성한 코드, resultType은 클래스를 명칭함 -->
 
@@ -51,7 +51,7 @@
     WHERE bno=#{no}
   </update>
   
-  <delete id="delete" parameterType="board">
+  <delete id="delete" parameterType="int">
     DELETE FROM board
     WHERE bno=#{value}
   </delete>
