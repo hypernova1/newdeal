@@ -14,10 +14,10 @@
   <c:choose>
 	  <c:when test="${not empty sessionScope.loginUser.name}">
 		  <span>${sessionScope.loginUser.name}</span>
-		  <a href="/app/auth/logout">로그아웃</a>
+		  <a href="/auth/logout">로그아웃</a>
 	  </c:when>
 	<c:otherwise>
-	  <a href="/app/auth/login">로그인</a>
+	  <a href="/auth/login">로그인</a>
   </c:otherwise>
 </c:choose>
 </div>

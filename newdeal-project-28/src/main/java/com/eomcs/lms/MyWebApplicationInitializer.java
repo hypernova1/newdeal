@@ -19,13 +19,14 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer {
     iocContainer.register(AppConfig.class);
     iocContainer.refresh();
 
+    //TODO: ????
     servletContext.addListener(new ContextLoaderListener(iocContainer));
 
     DispatcherServlet servlet = new DispatcherServlet(iocContainer);
 
     ServletRegistration.Dynamic registration = servletContext.addServlet("app", servlet);
     registration.setLoadOnStartup(1);
-    registration.addMapping("/app/*");
+    registration.addMapping("/");
 
     // 필터 세팅
     FilterRegistration charEncodingFilterReg =
@@ -33,7 +34,7 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer {
 
     charEncodingFilterReg.setInitParameter("encoding", "UTF-8");
     charEncodingFilterReg.setInitParameter("forceEncoding", "true");
-    charEncodingFilterReg.addMappingForUrlPatterns(null, false, "/app/*");
+    charEncodingFilterReg.addMappingForUrlPatterns(null, false, "/*");
   }
 
 }

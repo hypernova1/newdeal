@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset='UTF-8'>
-<meta http-equiv="Refresh" content="1;url=/app/board/list">
+<meta http-equiv="Refresh" content="1;url=/board/list">
 <title>게시물</title>
 </head>
 <body>
