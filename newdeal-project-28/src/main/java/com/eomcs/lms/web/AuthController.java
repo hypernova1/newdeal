@@ -32,7 +32,7 @@ public class AuthController {
 
     if(member != null) {
       session.setAttribute("loginUser", member);
-      return "redirect:/app/board/list";
+      return "redirect:/board/list";
     } else {
       session.invalidate();
       return "redirect:./form";

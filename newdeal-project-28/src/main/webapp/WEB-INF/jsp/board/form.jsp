@@ -25,7 +25,7 @@
 			<tr>
 				<th>작성자</th>
 				<td><input type="text" name="writerNo"
-				      value="${sessionScope.loginUser.no}" readonly="readonly"></td>
+				      value="${loginUser.name}" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>수업</th>
