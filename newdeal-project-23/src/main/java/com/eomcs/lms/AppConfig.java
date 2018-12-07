@@ -13,7 +13,9 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
-// Spring IoC 컨테이너에게 프로퍼티 파일 로딩 명령하기
+// Spring IoC 컨테이너 설정 클래스
+
+// 프로퍼티 파일 로딩
 @PropertySource("classpath:/com/eomcs/lms/conf/jdbc.properties")
 @ComponentScan("com.eomcs.lms")
 public class AppConfig {

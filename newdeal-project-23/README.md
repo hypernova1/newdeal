@@ -30,3 +30,5 @@
 ## HttpSession을 이용한 로그인/로그아웃
 
 ## Filter를 이용하여 서블릿 실행 전 작업 수행
+
+## MyBatis의 고급 ResultMap 다루기

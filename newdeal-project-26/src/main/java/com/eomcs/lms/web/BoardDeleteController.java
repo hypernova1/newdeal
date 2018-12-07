@@ -1,0 +1,31 @@
+package com.eomcs.lms.web;
+
+import java.sql.SQLException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import com.eomcs.lms.dao.BoardDao;
+
+@Controller
+public class BoardDeleteController {
+  
+  private BoardDao boardDao;
+  
+  public BoardDeleteController(BoardDao boardDao) {
+    this.boardDao = boardDao;
+  }
+
+  @RequestMapping("/board/delete")
+  public String delete(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+    
+    int no = Integer.parseInt(request.getParameter("no"));
+    request.setAttribute("count", boardDao.delete(no));
+    
+    response.setContentType("text/html;charset=UTF-8");
+    
+    return "/board/delete.jsp";
+    
+  }
+  
+}
