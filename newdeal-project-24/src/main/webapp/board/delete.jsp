@@ -6,11 +6,12 @@
 <html>
 <head>
 <meta charset='UTF-8'>
-<meta http-equiv="Refresh" content="1;url=list">
+<meta http-equiv="Refresh" content="1; URL=/app/board/list">
 <title>게시물</title>
 </head>
 <body>
 <h1>게시물 삭제</h1>
+
 <c:choose>
   <c:when test="${count == 0}">
     <p>해당 번호의 게시물이 없습니다.</p>
