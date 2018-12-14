@@ -24,6 +24,11 @@ public class BoardController {
     this.lessonDao = lessonDao;
   }
 
+  @RequestMapping("/")
+  public String root() {
+    return "./home.jsp";
+  }
+  
   @RequestMapping("add")
   public String add(Board board, HttpSession session) throws SQLException {
     
