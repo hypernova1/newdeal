@@ -52,7 +52,7 @@ public class CommentDao {
 
     try {
       conn = ConnectionHelper.getConnection("oracle");
-      String sql = "SELECT * from boardcomment where boardno = ?";
+      String sql = "SELECT * from boardcomment where boardno = ? order by commentno";
       pstmt = conn.prepareStatement(sql);
       pstmt.setInt(1, boardNo);
       rs = pstmt.executeQuery();
@@ -86,7 +86,7 @@ public class CommentDao {
     return comments;
   }
   
-  public int deleteComment(int number) {
+  public int deleteComment(int commentNo) {
     Connection conn = null;
     PreparedStatement pstmt = null;
     int count = 0;
@@ -94,7 +94,7 @@ public class CommentDao {
       conn = ConnectionHelper.getConnection("oracle");
       String sql = "delete from boardcomment where commentno = ?";
       pstmt = conn.prepareStatement(sql);
-      pstmt.setInt(1, number);
+      pstmt.setInt(1, commentNo);
       count = pstmt.executeUpdate();
     } catch (Exception ex) {
       ex.printStackTrace();
@@ -113,7 +113,7 @@ public class CommentDao {
     return count;
   }
   
-  public int updateBoard(BoardComment comment) {
+  public int updateComment(BoardComment comment) {
     Connection conn = null;
     PreparedStatement pstmt = null;
     int count = 0;

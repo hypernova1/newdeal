@@ -35,7 +35,6 @@
 %>
 
 <!DOCTYPE html>
-
 <%@page import="com.demoweb.model.dto.Member"%>
 <html>
 <head>
@@ -45,8 +44,8 @@
 <link rel="Stylesheet" href="/demoweb/styles/input2.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
-#comment {
-  line-style: none;
+ul {
+  list-style-type: none;
 }
 </style>
 <script type="text/javascript">
@@ -138,61 +137,64 @@
 					dataList = data;
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
-					alert("에러 발생");
+					alert("에러");
 				}
 			});
 			return dataList;
 		}
 		
 		function createList(dataList) {
-		      let list = "";
-		      for (let i = 0; i < dataList.length; i++) {
-		        list += '<li id="' + dataList[i].commentNo + '">'
-		            + '<span id="writer">작성자: ' + dataList[i].writer + '</span>'
-		            + '<span id="content">내용: ' + dataList[i].content + '</span>'
-		            + '<span id="regdate">등록일:' + dataList[i].regDate + '</span>'
-		            + '<button>수정</button><button>삭제</button></li>'
-		      }
-		      document.querySelector('#comment').innerHTML = list;
-		    };
+      let list = "";
+      for (let i = 0; i < dataList.length; i++) {
+        list += '<li id="' + dataList[i].commentNo + '">'
+              + '<span id="writer">작성자: ' + dataList[i].writer + '</span>'
+              + '<span id="content">' + dataList[i].content + '</span>'
+              + '<span id="regdate">등록일:' + dataList[i].regDate + '</span>'
+              + '<button>수정</button><button>삭제</button></li>'
+      }
+      document.querySelector('#comment').innerHTML = list;
+    };
 		    
 		window.addEventListener('load', function() {
 			const obj = { boardno : <%=board.getBoardNo()%> }
-			createList(ajax('commentList.jsp', "get", obj));
-			;
+			const dataList = ajax('/demoweb/comment/list', "get", obj);
+			createList(dataList);
 		});
 
 		document.querySelector('#comment-insert').addEventListener('click',function() {
 			const obj = {
 				boardno : <%=board.getBoardNo()%>,
 				content : document.querySelector("#comment-content").value
-			}
-			createList(ajax("insertComment.jsp", "GET", obj));
-		})
+			};
+			document.querySelector("#comment-content").value = "";
+			createList(ajax("/demoweb/comment/insert", "post", obj));
+		});
 		
 		document.querySelector('#comment').addEventListener('click', function(e){
 			if(e.target.nodeName == "BUTTON"){
 				if(e.target.textContent == "삭제"){
 					const obj = {
 							commentno : e.target.parentNode.id,
-							boardno: <%=board.getBoardNo()%>
-								}
-					createList(ajax('deleteComment.jsp', 'GET', obj));
+							boardno : <%=board.getBoardNo()%>
+								};
+					createList(ajax('/demoweb/comment/delete', 'post', obj));
 					
 				} else if(e.target.textContent == "수정"){
-					document.querySelector('#content').innerHTML = "<textarea id='modify-comment'></textarea>"
-                                                       + "<button id='modify'>확인</button>"
-					document.querySelector('#modify').addEventListener('click', function(){
+					const node = e.target.parentElement;
+					node.innerHTML = "<textarea id='modify-comment'>"
+					               + node.children[1].textContent + "</textarea>"
+                         + "<button id='modify'>확인</button>"
+					document.querySelector('#modify').addEventListener('click', function(e){
 						const obj = {
 								commentno : e.target.parentElement.id,
 								content : document.querySelector('#modify-comment').value,
-								boardno: <%=board.getBoardNo()%>
-						}
-						createList(ajax("updateComment.jsp", "GET", obj));
-					})
-				}
-			}
-		})
+								boardno : <%=board.getBoardNo()%>
+						};
+						createList(ajax("/demoweb/comment/update", "post", obj));
+					});
+				};
+			};
+		});
 
 	</script>
 </body>
