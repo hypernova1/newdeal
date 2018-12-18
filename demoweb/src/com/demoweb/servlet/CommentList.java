@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.demoweb.model.dao.CommentDao;
 import com.demoweb.model.dto.BoardComment;
+import net.sf.json.JSONArray;
 
 @WebServlet("/comment/list")
 public class CommentList extends HttpServlet {
@@ -20,15 +21,21 @@ public class CommentList extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
+    
+    response.setCharacterEncoding("utf-8");
     HttpSession session = request.getSession();
+    
     if (session.getAttribute("loginuser") == null) {
       response.sendRedirect("/demoweb/loginform?returnurl=" + request.getRequestURI());
       return;
     }
-    List<BoardComment> list = dao.getCommentList(Integer.parseInt(request.getParameter("boardno")));
-    response.setContentType("application/json");
-    System.out.println(list.get(0).getContent());
-
+    
+    int boardNo = Integer.parseInt(request.getParameter("boardno"));
+    List<BoardComment> list = dao.getCommentList(boardNo);
+    JSONArray obj = JSONArray.fromObject(list);
+    
+    response.getWriter().print(obj);
+    response.getWriter().flush();
     
   }
   

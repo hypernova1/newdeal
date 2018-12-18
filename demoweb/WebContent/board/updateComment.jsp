@@ -15,7 +15,7 @@ BoardComment comment = new BoardComment();
 comment.setCommentNo(commentno);
 comment.setContent(content);
 
-dao.updateBoard(comment);
+dao.updateComment(comment);
 
 List<BoardComment> list = dao.getCommentList(boardno);
 JSONArray jsonarray = JSONArray.fromObject(list);
