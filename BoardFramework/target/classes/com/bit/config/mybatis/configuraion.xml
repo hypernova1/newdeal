@@ -10,6 +10,6 @@
 	  <typeAlias alias="albumDto" type="com.bit.board.model.AlbumDto" />
 	  <typeAlias alias="boardDto" type="com.bit.board.model.BoardDto" />
 	  <typeAlias alias="reboardDto" type="com.bit.board.model.ReboardDto" />
-	  <typeAlias alias="momoDto" type="com.bit.board.model.MemoDto" />
+	  <typeAlias alias="memoDto" type="com.bit.board.model.MemoDto" />
   </typeAliases>
 </configuration>

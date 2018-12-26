@@ -6,8 +6,9 @@ import com.bit.board.model.ReboardDto;
 
 public interface ReboardService {
   int writeArticle(ReboardDto reboardDto);
-  List<ReboardDto> listArticle(Map<String, Object> param);
+  List<ReboardDto> listArticle(Map<String, String> param);
   ReboardDto viewArticle(int rseq);
+  ReboardDto getArticle(int rseq);
   int replyArticle(ReboardDto reboardDto);
   
   void modifyArticle(ReboardDto reboardDto);

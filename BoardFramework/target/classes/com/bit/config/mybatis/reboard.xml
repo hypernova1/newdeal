@@ -16,8 +16,8 @@
   <select id="viewArticle" parameterType="int" resultType="reboardDto">
     SELECT *
     FROM board b join reboard r
-    ON b.seq = r.ref
-    AND b.seq = #{value}
+    ON b.seq = r.seq
+    AND b.seq = #{seq}
   </select>
   
   <select id="listArticle" parameterType="Map" resultType="reboardDto">
@@ -33,9 +33,42 @@
 	             r.rseq, r.ref, r.lev, r.step, r.pseq, r.reply
         FROM board b JOIN reboard r
         ON b.seq = r.seq AND b.bcode = #{bcode}
-        ORDER BY b.seq DESC) a 
+        
+        <if test="word != null and word != ''">
+          <choose>
+            <when test="key == 'subject'">
+              AND b.subject LIKE '%' || #{word} || '%'
+            </when>
+            <otherwise>
+              AND b.${key}<!-- 문자열이 아닌, 값임 --> LIKE #{word} <!-- 문자열 -->
+            </otherwise>
+          </choose>
+        </if>
+        
+        ORDER BY ref DESC, step) a 
 	    WHERE rownum &lt;= #{end}
 		) b
 		WHERE b.rn > ${start}
 	</select>
+	
+	<update id="updateStep" parameterType="reboardDto">
+	 UPDATE reboard
+	 SET step = step + 1
+	 WHERE ref = #{ref} AND step > #{step}
+	</update>
+	
+	<insert id="replyArticle" parameterType="reboardDto">
+	 INSERT ALL
+	     INTO board (seq, name, id, email, subject, content, hit, logtime, bcode)
+	     VALUES (#{seq}, #{name}, #{id}, #{email}, #{subject}, #{content}, 0, sysdate, #{bcode})
+	     INTO reboard (rseq, seq, ref, lev, step, pseq, reply)
+	     VALUES (reboard_rseq.nextval, #{seq}, #{ref}, #{lev} + 1, ${step} + 1, #{pseq}, 0)
+   SELECT * FROM dual
+	</insert>
+	
+	<update id="updateReply" parameterType="int">
+	 UPDATE reboard
+	 SET reply = reply + 1
+	 WHERE seq = #{pseq}
+	</update>
 </mapper>

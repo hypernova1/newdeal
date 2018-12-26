@@ -5,6 +5,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.bit.board.dao.ReboardDao;
 import com.bit.board.model.ReboardDto;
 import com.bit.common.dao.CommonDao;
@@ -28,10 +29,15 @@ public class ReboardServiceImpl implements ReboardService {
     int cnt = sqlSession.getMapper(ReboardDao.class).writeArticle(reboardDto);
     return cnt != 0 ? seq : 0;
   }
+  
+  @Override
+  public ReboardDto getArticle(int seq) {
+    return sqlSession.getMapper(ReboardDao.class).viewArticle(seq);
+  }
 
   @Override
-  public List<ReboardDto> listArticle(Map<String, Object> param) {
-    int page = Integer.parseInt((String) param.get("page"));
+  public List<ReboardDto> listArticle(Map<String, String> param) {
+    int page = Integer.parseInt(param.get("page"));
     int end = page * BoardConstance.LIST_CNT.getValue();
     int start = end - BoardConstance.LIST_CNT.getValue();
     param.put("start", start + "");
@@ -50,8 +56,16 @@ public class ReboardServiceImpl implements ReboardService {
   }
 
   @Override
+  @Transactional
   public int replyArticle(ReboardDto reboardDto) {
-    return 0;
+    int seq = sqlSession.getMapper(CommonDao.class).getNextSeq();
+    reboardDto.setSeq(seq);
+    ReboardDao reboardDao = sqlSession.getMapper(ReboardDao.class);
+    reboardDao.updateStep(reboardDto);
+    reboardDao.replyArticle(reboardDto);
+    reboardDao.updateReply(reboardDto.getPseq());
+    
+    return seq;
   }
 
   @Override
@@ -62,18 +76,6 @@ public class ReboardServiceImpl implements ReboardService {
   @Override
   public void deleteArticle(int rseq) {
     
-  }
-  
-  @SuppressWarnings("unused")
-  public int StringToInt(String tmp) {
-    boolean flag = true;
-    if(tmp != null) {
-      int len = tmp.length();
-      for(int i = 0; i < len; i++) {
-        char a = (char) (tmp.charAt(i) - 48);
-      }
-    }
-    return 0;
   }
 
 }

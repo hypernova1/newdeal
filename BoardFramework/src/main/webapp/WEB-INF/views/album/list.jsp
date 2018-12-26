@@ -21,9 +21,10 @@
 <!-- bbs start -->
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 	<tr valign="bottom">
-		<td nowrap><a href=""><img
-			src="${root}/img/board/btn_write_01.gif" width="64" height="22"
-			border="0" align="absmiddle" alt="글쓰기"></a></td>
+		<td nowrap>
+			<img src="${root}/img/board/btn_write_01.gif" width="64" height="22" class="writeBtn"
+				border="0" align="absmiddle" alt="글쓰기">
+		</td>
 
 		<td width="100%" style="padding-left: 6px" valign="bottom">새글 <b><font
 			class="text_acc_02">새글 수를 출력 하는 부분</font></b> / 전체 <font
@@ -43,43 +44,8 @@
 		<td class="bg_board_title_02" height="2" colspan="11"
 			style="overflow: hidden; padding: 0px"></td>
 	</tr>
-	<tr class="bg_board_title" align="center" height="28">
-		<td nowrap><b>번호</b></td>
-		<td nowrap class="board_bar" style="padding: 0px">|</td>
-		<td></td>
-		<td width="100%"><b>제목</b></td>
-		<td nowrap class="board_bar" style="padding: 0px">|</td>
-		<td width="120" nowrap><b>글쓴이</b></td>
-		<td nowrap class="board_bar" style="padding: 0px">|</td>
-		<td nowrap><b>조회</b></td>
-		<td nowrap class="board_bar" style="padding: 0px">|</td>
-		<td width="45" nowrap><b>날짜</b></td>
-	</tr>
 	<tr>
-		<td class="bg_board_title_02" height="1" colspan="11"
-			style="overflow: hidden; padding: 0px"></td>
-	</tr>
-
-	<!-- 공지기능 적용시 -->
-
-
-	<!-- 공지기능 적용끝  -->
-	<tr>
-		<td align="center" class="text_gray">글번호 출력하는 부분</td>
-		<td></td>
-		<td nowrap class="onetext" style="padding-right: 5px"></td>
-		<!--td>
-     
-     </td-->
-		<td style="word-break: break-all;"><a href=""
-			class="link_board_03">글 제목을 출력 하는 부분&nbsp;&nbsp;&nbsp;</a></td>
-		<td></td>
-		<td style="word-break: break-all;"><a href="javascript:;"
-			onClick="showSideView();" class="link_board_04">작성자를 출력 하는 부분</a></td>
-		<td></td>
-		<td align="center" class="text_gray">조회수를 출력 하는 부분</td>
-		<td></td>
-		<td align="center" class="text_gray">작성 일자를 출력 하는 부분</td>
+	 <td colspan="11"> 나중에 이미지 출력하는 화면 </td>
 	</tr>
 
 	<tr>
@@ -102,9 +68,9 @@
 		<td colspan="3" height="5"></td>
 	</tr>
 	<tr valign="top">
-		<td nowrap><a href=""><img
-			src="${root}/img/board/btn_write_01.gif" width="64" height="22"
-			border="0" align="absmiddle" alt="글쓰기"></a></td>
+		<td nowrap>
+		  <img src="${root}/img/board/btn_write_01.gif" width="64" height="22" class="writeBtn"
+			  border="0" align="absmiddle" alt="글쓰기"></td>
 		<td width="100%" align="center"><!--PAGE--> 페이지 분류를 하는 부분</td>
 		<td nowrap class="stext"><b>현재 페이지 출력 부분</b> / 총 페이지수를 출력 하는 부분
 		pages</td>
@@ -122,8 +88,7 @@
 	</tr>
 	<tr>
 		<td width="50%"></td>
-		<td nowrap><select name="item" onchange="javascript:ch()"
-			class="inp">
+		<td nowrap><select name="item" onchange="javascript:ch()" class="inp">
 			<option value="subject">글제목
 			<option value="writer">글쓴이
 			<option value="no">글번호
@@ -144,6 +109,45 @@
 		</td>
 	</tr>
 </table>
+<script>
+initVars("${root}/album");
+$('.writeBtn').click(function(){
+  $('#commonForm').attr('method', 'get').attr('action', writepath).submit();
+});
+
+$(".posting").click(function(){
+  //alert($(this).children().first().text());
+  $('#seq').val($(this).children().first().text());
+  $('#commonForm').attr('method', 'get').attr('action', viewpath).submit();
+});
+
+$('.firstPage').click(function(){
+  $('#page').val("1");
+  $('#key').val("");
+  $('#word').val("");
+    $('#commonForm').attr('method', 'get').attr('action', listpath).submit();
+});
+  
+$('.movepage').click(function(){
+    $('#page').val($(this).attr("move-page-no"));
+    $('#commonForm').attr('method', 'get').attr('action', listpath).submit();
+  });
+  
+$('#searchBtn').click(function(){
+    $('#page').val("1");
+    $('#key').val($("#skey").val());
+    $('#word').val($("#sword").val());
+    $('#commonForm').attr('method', 'get').attr('action', listpath).submit();
+});
+
+$('.myBtn').click(function(){
+   alert(encodeURI('aaa')); // 자바스크립트로 데이터를 보낼 때는 인코딩을 해서 넘겨야함(빌어먹을 IE)
+    $('#page').val("1");
+    $('#key').val($("id"));
+    $('#word').val(${userInfo.id});
+    $('#commonForm').attr('method', 'get').attr('action', listpath).submit();
+});
+</script>
 </form>
 </body>
 </html>

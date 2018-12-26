@@ -13,5 +13,28 @@
     SET hit = hit + 1
     WHERE seq = #{value}
   </update>
-
+  
+  <select id="getNewArticleCount" parameterType="int" resultType="int">
+    SELECT COUNT(seq)
+    FROM board
+    WHERE bcode = #{bcode}
+    AND TO_CHAR(logtime, 'yymmdd') = TO_CHAR(sysdate, 'yymmdd')
+  </select>
+  
+  <select id="getTotalArticleCount" parameterType="map" resultType="int">
+    SELECT COUNT(b.seq)
+    FROM board b JOIN reboard r
+    ON b.seq = r.seq
+    WHERE bcode = #{bcode}
+    <if test="word != null and word != ''">
+          <choose>
+            <when test="key == 'subject'">
+              AND subject LIKE '%' || #{word} || '%'
+            </when>
+            <otherwise>
+              AND #{key} = #{word}
+            </otherwise>
+          </choose>
+        </if>
+  </select>
 </mapper>
