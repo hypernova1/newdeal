@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.bit.board.model.AlbumDto;
@@ -26,6 +27,7 @@ import com.bit.member.model.MemberDto;
 import com.bit.util.PageNavigation;
 
 @Controller
+@RestController
 @RequestMapping("/album")
 public class AlbumController {
   
@@ -59,9 +61,9 @@ public class AlbumController {
       HttpSession session, Model model) {
     MemberDto memberDto = (MemberDto) session.getAttribute("userInfo");
     if (memberDto != null) {
-      albumDto.setId(memberDto.getId());
-      albumDto.setName(memberDto.getName());
-      albumDto.setEmail(memberDto.getEmail());
+//      albumDto.setId(memberDto.getId());
+//      albumDto.setName(memberDto.getName());
+//      albumDto.setEmail(memberDto.getEmail());
       
       if(multipartFile != null && !multipartFile.isEmpty()) {
         String oPicture = multipartFile.getOriginalFilename();

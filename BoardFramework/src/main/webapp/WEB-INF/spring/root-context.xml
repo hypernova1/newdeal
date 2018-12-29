@@ -15,7 +15,7 @@
 	   <property name="username" value="bitboard" />
 	   <property name="password" value="bitboard" />
 	  </bean> -->
-	  
+	  <bean id="bpe" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 	  <bean id="ds" class="org.springframework.jndi.JndiObjectFactoryBean">
 	   <property name="jndiName" value="java:comp/env/jdbc/bit"/>
 	  </bean>

@@ -7,6 +7,11 @@
 <meta charset="utf-8" />
 <title>Page Title</title>
 <style>
+
+#commonForm {
+float: right;
+}
+
 .menu_list { width: 200px; }
 .menu_category {
 position: relative;
